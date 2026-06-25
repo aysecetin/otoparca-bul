@@ -58,6 +58,9 @@ export default function HomePage() {
   return (
     <>
       <section className="hero-band">
+        <div className="hero-slide hero-slide-one" aria-hidden="true" />
+        <div className="hero-slide hero-slide-two" aria-hidden="true" />
+        <div className="hero-overlay" aria-hidden="true" />
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:px-8 lg:py-16">
           <div className="self-center">
             <span className="eyebrow">Denizli sanayi odaklı MVP</span>
