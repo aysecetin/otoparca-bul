@@ -45,7 +45,7 @@ Web sitesi olmayan dükkanlar için dijital profil, WhatsApp talebi ve öne çı
 
 Stok ihtiyacı olmayan ama müşteri, servis veya esnaf hesabı takip eden işletmeler için borç/alacak ekranı.
 
-### Stok + Depo Paketi
+### 📦 Stok + Depo Paketi
 
 Parça adedi, düşük stok uyarısı, depo, raf ve kutu konumu takip etmek isteyen dükkanlar için.
 
