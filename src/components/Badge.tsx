@@ -1,0 +1,5 @@
+import { ReactNode } from "react";
+
+export default function Badge({ children, tone = "slate" }: { children: ReactNode; tone?: "slate" | "green" | "orange" | "blue" }) {
+  return <span className={`badge badge-${tone}`}>{children}</span>;
+}
