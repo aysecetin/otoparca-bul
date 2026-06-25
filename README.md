@@ -49,7 +49,7 @@ Stok ihtiyacı olmayan ama müşteri, servis veya esnaf hesabı takip eden işle
 
 Parça adedi, düşük stok uyarısı, depo, raf ve kutu konumu takip etmek isteyen dükkanlar için.
 
-### Tam Yönetim Paketi
+### 🎯 Tam Yönetim Paketi
 
 Dijital vitrin, stok, depo, cari, talep yönetimi ve panel istatistiklerini birlikte sunan kapsamlı demo paket.
 
