@@ -1,10 +1,12 @@
-import { BarChart3, Box, ClipboardList, Crown, LayoutDashboard, Plus, Store } from "lucide-react";
+import { BarChart3, Box, ClipboardList, Crown, LayoutDashboard, Plus, ReceiptText, Store, Warehouse } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 
 const links = [
   { to: "/panel", label: "Genel Bakış", icon: LayoutDashboard, end: true },
   { to: "/panel/stoklar", label: "Stoklarım", icon: Box },
   { to: "/panel/stoklar?new=1", label: "Yeni Parça Ekle", icon: Plus },
+  { to: "/panel/depolar", label: "Depolarım", icon: Warehouse },
+  { to: "/panel/cari", label: "Cari Hesaplar", icon: ReceiptText },
   { to: "/panel/talepler", label: "Gelen Talepler", icon: ClipboardList },
   { to: "/parcaci/denizli-oto-far", label: "Dükkan Profilim", icon: Store },
   { to: "/parcaci-olarak-katil", label: "Paketim", icon: Crown },

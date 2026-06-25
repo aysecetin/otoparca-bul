@@ -147,7 +147,7 @@ body {
   }
 
   .stat-card strong {
-    @apply mt-2 block text-4xl text-emerald-700;
+    @apply mt-2 block break-words text-3xl text-emerald-700;
   }
 
   .info-box {

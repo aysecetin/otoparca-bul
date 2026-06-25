@@ -1,6 +1,8 @@
 export type PartType = "Orijinal" | "Yan sanayi" | "Çıkma";
 export type StockStatus = "Stokta var" | "Sınırlı stok" | "Talep üzerine";
 export type RequestStatus = "Yeni" | "Görüşüldü" | "Satışa Döndü" | "Uygun Değil";
+export type AccountStatus = "Açık" | "Tahsilat Bekliyor" | "Ödendi";
+export type MovementType = "Giriş" | "Çıkış" | "Sayım";
 
 export interface Seller {
   id: string;
@@ -45,4 +47,28 @@ export interface CustomerRequest {
   note: string;
   date: string;
   status: RequestStatus;
+}
+
+export interface CariAccount {
+  id: string;
+  customerName: string;
+  phone: string;
+  accountType: "Müşteri" | "Esnaf" | "Servis";
+  debit: number;
+  credit: number;
+  lastTransaction: string;
+  note: string;
+  status: AccountStatus;
+}
+
+export interface WarehouseItem {
+  id: string;
+  partName: string;
+  warehouse: string;
+  shelf: string;
+  box: string;
+  quantity: number;
+  lastMovement: string;
+  movementType: MovementType;
+  note: string;
 }

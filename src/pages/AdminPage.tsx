@@ -1,12 +1,14 @@
 import { Search, ShieldCheck } from "lucide-react";
 import { useMemo, useState } from "react";
 import Badge from "../components/Badge";
-import { parts, requests, sellers } from "../data/mockData";
+import { cariAccounts, parts, requests, sellers, warehouseItems } from "../data/mockData";
+import { formatPrice } from "../utils/format";
 
 export default function AdminPage() {
   const [query, setQuery] = useState("");
   const filteredSellers = useMemo(() => sellers.filter((seller) => seller.name.toLocaleLowerCase("tr-TR").includes(query.toLocaleLowerCase("tr-TR"))), [query]);
   const topSearches = ["Clio sol far", "Egea ön tampon", "Golf 7 debriyaj", "Astra sağ stop"];
+  const openBalance = cariAccounts.reduce((total, account) => total + Math.max(account.debit - account.credit, 0), 0);
 
   return (
     <section className="section">
@@ -14,10 +16,12 @@ export default function AdminPage() {
         <span className="eyebrow-dark">Admin demo</span>
         <h1>Platformun genel durumunu tek ekranda gör</h1>
       </div>
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-3 xl:grid-cols-5">
         <div className="stat-card">Toplam parçacı <strong>{sellers.length}</strong></div>
         <div className="stat-card">Toplam parça <strong>{parts.length}</strong></div>
         <div className="stat-card">Toplam müşteri talebi <strong>{requests.length}</strong></div>
+        <div className="stat-card">Cari bakiye <strong>{formatPrice(openBalance)}</strong></div>
+        <div className="stat-card">Depo kaydı <strong>{warehouseItems.length}</strong></div>
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_1fr]">
@@ -30,10 +34,29 @@ export default function AdminPage() {
           </div>
         </div>
         <div className="card">
+          <h2 className="text-xl font-extrabold">En çok seçilen modüller</h2>
+          <div className="mt-4 grid gap-3">
+            {["Dijital Vitrin", "Cari Hesap", "Stok + Depo", "Talep Yönetimi"].map((module, index) => (
+              <div className="list-row" key={module}><span>{module}</span><strong>{18 - index * 3} pilot</strong></div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_1fr]">
+        <div className="card">
           <h2 className="text-xl font-extrabold">Onay bekleyen parçacılar</h2>
           <div className="mt-4 grid gap-3">
             {sellers.filter((seller) => !seller.approved).map((seller) => (
               <div className="list-row" key={seller.id}><span>{seller.name}</span><button className="btn btn-secondary btn-sm" type="button">Onayla</button></div>
+            ))}
+          </div>
+        </div>
+        <div className="card">
+          <h2 className="text-xl font-extrabold">Tahsilat bekleyen cariler</h2>
+          <div className="mt-4 grid gap-3">
+            {cariAccounts.filter((account) => account.status !== "Ödendi").slice(0, 3).map((account) => (
+              <div className="list-row" key={account.id}><span>{account.customerName}</span><strong>{formatPrice(account.debit - account.credit)}</strong></div>
             ))}
           </div>
         </div>

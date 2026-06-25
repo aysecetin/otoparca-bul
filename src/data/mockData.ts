@@ -1,4 +1,4 @@
-import { CustomerRequest, Part, Seller } from "../types";
+import { CariAccount, CustomerRequest, Part, Seller, WarehouseItem } from "../types";
 
 export const sellers: Seller[] = [
   {
@@ -14,7 +14,7 @@ export const sellers: Seller[] = [
     phone: "+90 258 000 10 20",
     whatsapp: "905550001020",
     badges: ["Pilot parçacı", "WhatsApp ile hızlı dönüş", "Yerel sanayi işletmesi"],
-    package: "Stoklu Vitrin",
+    package: "Vitrin + Stok",
     approved: true,
   },
   {
@@ -30,7 +30,7 @@ export const sellers: Seller[] = [
     phone: "+90 258 000 22 33",
     whatsapp: "905550002233",
     badges: ["Pilot parçacı", "Çıkma parça uzmanı", "Telefonla teyit"],
-    package: "Profesyonel Paket",
+    package: "Tam Yönetim Paketi",
     approved: true,
   },
   {
@@ -46,7 +46,7 @@ export const sellers: Seller[] = [
     phone: "+90 258 000 44 55",
     whatsapp: "905550004455",
     badges: ["Yerel sanayi işletmesi", "Stoklu ürün", "Hızlı teklif"],
-    package: "Başlangıç Dijital Vitrin",
+    package: "Cari Takip Paketi",
     approved: false,
   },
 ];
@@ -190,6 +190,100 @@ export const requests: CustomerRequest[] = [
     note: "Uygun fiyatlı çıkma arıyor.",
     date: "22 Haziran 2026",
     status: "Uygun Değil",
+  },
+];
+
+export const cariAccounts: CariAccount[] = [
+  {
+    id: "cari-1",
+    customerName: "Usta Garaj Servis",
+    phone: "+90 258 111 22 33",
+    accountType: "Servis",
+    debit: 18400,
+    credit: 7200,
+    lastTransaction: "25 Haziran 2026",
+    note: "Haftalık tahsilat görüşmesi yapılacak.",
+    status: "Tahsilat Bekliyor",
+  },
+  {
+    id: "cari-2",
+    customerName: "Mehmet Kaya",
+    phone: "+90 532 111 22 33",
+    accountType: "Müşteri",
+    debit: 3850,
+    credit: 3850,
+    lastTransaction: "24 Haziran 2026",
+    note: "Clio sol far ödemesi kapandı.",
+    status: "Ödendi",
+  },
+  {
+    id: "cari-3",
+    customerName: "Pamukkale Oto Elektrik",
+    phone: "+90 536 555 12 45",
+    accountType: "Esnaf",
+    debit: 12600,
+    credit: 4200,
+    lastTransaction: "23 Haziran 2026",
+    note: "Açık bakiye için cuma günü dönüş bekleniyor.",
+    status: "Açık",
+  },
+  {
+    id: "cari-4",
+    customerName: "Ege Kaporta",
+    phone: "+90 541 888 22 10",
+    accountType: "Servis",
+    debit: 9400,
+    credit: 0,
+    lastTransaction: "22 Haziran 2026",
+    note: "Tampon ve kaporta grubu için cari açıldı.",
+    status: "Açık",
+  },
+];
+
+export const warehouseItems: WarehouseItem[] = [
+  {
+    id: "depo-1",
+    partName: "Renault Clio 4 Sol Far",
+    warehouse: "Ana Depo",
+    shelf: "A-03",
+    box: "Kutu 12",
+    quantity: 3,
+    lastMovement: "25 Haziran 2026",
+    movementType: "Giriş",
+    note: "Web vitrininde görünüyor.",
+  },
+  {
+    id: "depo-2",
+    partName: "Fiat Egea Ön Tampon",
+    warehouse: "Kaporta Alanı",
+    shelf: "T-01",
+    box: "Askı raf",
+    quantity: 5,
+    lastMovement: "24 Haziran 2026",
+    movementType: "Sayım",
+    note: "Boyasız ürünler üst rafta.",
+  },
+  {
+    id: "depo-3",
+    partName: "Opel Astra J Sağ Stop",
+    warehouse: "Çıkma Parça Deposu",
+    shelf: "C-07",
+    box: "Kutu 04",
+    quantity: 1,
+    lastMovement: "23 Haziran 2026",
+    movementType: "Çıkış",
+    note: "Sınırlı stok uyarısı var.",
+  },
+  {
+    id: "depo-4",
+    partName: "Volkswagen Golf 7 Debriyaj Seti",
+    warehouse: "Mekanik Raf",
+    shelf: "M-02",
+    box: "Palet 3",
+    quantity: 2,
+    lastMovement: "22 Haziran 2026",
+    movementType: "Giriş",
+    note: "Şase uyumluluğu sorulacak.",
   },
 ];
 

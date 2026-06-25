@@ -1,7 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import AdminPage from "./pages/AdminPage";
+import CariAccountsPage from "./pages/CariAccountsPage";
 import DashboardPage from "./pages/DashboardPage";
+import WarehousesPage from "./pages/WarehousesPage";
 import HomePage from "./pages/HomePage";
 import JoinPage from "./pages/JoinPage";
 import PartDetailPage from "./pages/PartDetailPage";
@@ -20,6 +22,8 @@ export default function App() {
         <Route path="/parcaci/:id" element={<SellerProfilePage />} />
         <Route path="/panel" element={<DashboardPage />} />
         <Route path="/panel/stoklar" element={<StocksPage />} />
+        <Route path="/panel/depolar" element={<WarehousesPage />} />
+        <Route path="/panel/cari" element={<CariAccountsPage />} />
         <Route path="/panel/talepler" element={<RequestsPage />} />
         <Route path="/parcaci-olarak-katil" element={<JoinPage />} />
         <Route path="/admin-demo" element={<AdminPage />} />
