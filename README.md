@@ -31,7 +31,7 @@ gibi modülleri ihtiyaca göre sunar.
 - Admin demo ekranı
 - Light/Dark mode
 - Mock data ile çalışan demo akışları
-- Demo WhatsApp bağlantıları
+- Demo WhatsApp bağlantıları  
 
 ## Modüler Paket Mantığı
 
