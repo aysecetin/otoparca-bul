@@ -20,7 +20,6 @@ gibi modülleri ihtiyaca göre sunar.
 
 ## Öne Çıkan Özellikler
 
-- Türkçe ve responsive arayüz
 - Parça arama ve filtreleme
 - Parça detay sayfası
 - Parçacı profil/dijital vitrin sayfası
