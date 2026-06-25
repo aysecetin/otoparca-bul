@@ -1,4 +1,5 @@
-import { ArrowRight, CheckCircle2, MessageCircle, Search, Store, Wrench } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageCircle, Search, Store, Wrench, X } from "lucide-react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchPanel from "../components/SearchPanel";
 
@@ -10,10 +11,38 @@ const shopBenefits = [
 ];
 
 const packages = [
-  { name: "Vitrin Paketi", price: "Pilot başlangıç", features: ["Dükkan profil sayfası", "WhatsApp talep butonu", "Stok göstermek zorunlu değil"] },
-  { name: "Cari Takip Paketi", price: "Modül bazlı", features: ["Müşteri ve servis hesapları", "Borç/alacak takibi", "Tahsilat bekleyenler listesi"] },
-  { name: "Stok + Depo Paketi", price: "Modül bazlı", features: ["Stok listesi", "Raf/kutu/depo konumu", "Düşük stok ve hareket takibi"] },
-  { name: "Tam Yönetim Paketi", price: "Gelişmiş demo", features: ["Dijital vitrin", "Stok, depo ve cari", "Talep ve panel istatistikleri"] },
+  {
+    name: "Vitrin Paketi",
+    price: "Pilot başlangıç",
+    summary: "İnternette görünmek isteyen ama stok programı kullanmak istemeyen dükkanlar için.",
+    bestFor: "Web sitesi olmayan, WhatsApp üzerinden talep almak isteyen küçük parçacılar.",
+    features: ["Dükkan profil sayfası", "WhatsApp talep butonu", "Öne çıkan parçalar", "Stok göstermek zorunlu değil"],
+    details: ["Müşteri dükkan profilini, konumu ve uzman olduğu markaları görür.", "Parça varsa vitrinde listelenir, yoksa müşteri talep bırakabilir.", "İlk aşamada karmaşık stok girişi yapmadan dijital vitrin açılır."],
+  },
+  {
+    name: "Cari Takip Paketi",
+    price: "Modül bazlı",
+    summary: "Stok ihtiyacı olmayan ama müşteri/esnaf hesabı takip eden işletmeler için.",
+    bestFor: "Defterde borç-alacak tutan, servislerle çalışan veya tahsilat takibi yapan parçacılar.",
+    features: ["Müşteri ve servis hesapları", "Borç/alacak takibi", "Açık bakiye görünümü", "Tahsilat bekleyenler listesi"],
+    details: ["Müşteri, servis ve esnaf hesapları ayrı kartlarda tutulur.", "Borç, alacak ve kalan bakiye tek ekranda görünür.", "Tahsilat bekleyen hesaplar panelde öne çıkar."],
+  },
+  {
+    name: "Stok + Depo Paketi",
+    price: "Modül bazlı",
+    summary: "Parçanın adedini ve dükkanda nerede durduğunu takip etmek isteyenler için.",
+    bestFor: "Raf, kutu, depo veya çıkma parça alanı olan stoklu çalışan dükkanlar.",
+    features: ["Stok listesi", "Raf/kutu/depo konumu", "Düşük stok uyarısı", "Ürün giriş-çıkış hareketleri"],
+    details: ["Her parçaya stok adedi ve depo konumu girilebilir.", "Raf, kutu veya depo alanına göre arama yapılır.", "Düşük stoklu ürünler panelde uyarı olarak gösterilir."],
+  },
+  {
+    name: "Tam Yönetim Paketi",
+    price: "Gelişmiş demo",
+    summary: "Hem müşteri getirmek hem de içerideki işi takip etmek isteyen işletmeler için.",
+    bestFor: "Vitrin, stok, depo, cari ve talep yönetimini birlikte kullanmak isteyen parçacılar.",
+    features: ["Dijital vitrin", "Stok, depo ve cari", "Talep yönetimi", "Panel istatistikleri"],
+    details: ["Müşteri vitrinden parçayı görür ve WhatsApp ile ulaşır.", "Dükkan içeride stok, depo ve cari takibini aynı panelden yapar.", "Yönetici panelinde paket, talep ve pilot işletme takibi yapılır."],
+  },
 ];
 
 const modules = [
@@ -24,6 +53,8 @@ const modules = [
 ];
 
 export default function HomePage() {
+  const [selectedPackage, setSelectedPackage] = useState<(typeof packages)[number] | null>(null);
+
   return (
     <>
       <section className="hero-band">
@@ -119,14 +150,67 @@ export default function HomePage() {
               <Wrench className="text-emerald-700" />
               <h3 className="mt-4 text-xl font-extrabold">{item.name}</h3>
               <p className="mt-2 text-sm font-bold text-mint">{item.price}</p>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{item.summary}</p>
               <ul className="mt-5 grid gap-3 text-sm text-slate-600">
                 {item.features.map((feature) => <li className="flex gap-2" key={feature}><CheckCircle2 size={17} className="shrink-0 text-mint" /> {feature}</li>)}
               </ul>
-              <Link to="/parcaci-olarak-katil" className="btn btn-secondary mt-6 w-full">Paketi incele <ArrowRight size={18} /></Link>
+              <button className="btn btn-secondary mt-6 w-full" type="button" onClick={() => setSelectedPackage(item)}>
+                Paketi incele <ArrowRight size={18} />
+              </button>
             </article>
           ))}
         </div>
       </section>
+
+      {selectedPackage && (
+        <div className="modal-backdrop" role="dialog" aria-modal="true">
+          <div className="modal">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <span className="eyebrow-dark">Paket içeriği</span>
+                <h2 className="mt-3 text-2xl font-extrabold">{selectedPackage.name}</h2>
+                <p className="mt-2 text-sm font-bold text-mint">{selectedPackage.price}</p>
+              </div>
+              <button className="icon-button" type="button" onClick={() => setSelectedPackage(null)} aria-label="Paket penceresini kapat">
+                <X size={20} />
+              </button>
+            </div>
+
+            <p className="mt-5 rounded-lg bg-slate-50 p-4 leading-7 text-slate-700">{selectedPackage.summary}</p>
+
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div>
+                <h3 className="font-extrabold">Kimler için uygun?</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{selectedPackage.bestFor}</p>
+              </div>
+              <div>
+                <h3 className="font-extrabold">Pakete dahil olanlar</h3>
+                <ul className="mt-2 grid gap-2 text-sm text-slate-600">
+                  {selectedPackage.features.map((feature) => (
+                    <li className="flex gap-2" key={feature}><CheckCircle2 size={16} className="shrink-0 text-mint" /> {feature}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-5">
+              <h3 className="font-extrabold">Nasıl çalışır?</h3>
+              <div className="mt-3 grid gap-3">
+                {selectedPackage.details.map((detail) => (
+                  <div className="list-row" key={detail}>
+                    <span>{detail}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link className="btn btn-primary flex-1" to="/parcaci-olarak-katil">Bu paketle başvur</Link>
+              <button className="btn btn-secondary flex-1" type="button" onClick={() => setSelectedPackage(null)}>Diğer paketlere bak</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
