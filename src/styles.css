@@ -79,6 +79,10 @@ body {
     @apply grid h-10 w-10 place-items-center rounded-lg border border-line bg-white text-ink;
   }
 
+  .theme-toggle {
+    @apply inline-flex min-h-10 items-center gap-2 rounded-lg border border-line bg-white px-3 text-sm font-extrabold text-slate-700 transition hover:bg-slate-100;
+  }
+
   .nav-link {
     @apply rounded-lg px-3 py-2 text-sm font-bold text-slate-600 hover:bg-slate-100 hover:text-ink;
   }
@@ -278,4 +282,116 @@ select:focus,
   background-color: var(--brand-green-soft) !important;
   color: var(--brand-green-dark) !important;
   border-color: rgba(34, 139, 85, 0.16) !important;
+}
+
+.dark body {
+  background: #0f172a;
+}
+
+.dark .bg-slate-50,
+.dark .bg-slate-100 {
+  background-color: #0f172a !important;
+}
+
+.dark header,
+.dark footer,
+.dark .bg-white,
+.dark .card,
+.dark .modal {
+  background-color: #111827 !important;
+}
+
+.dark .bg-white\/95 {
+  background-color: rgba(17, 24, 39, 0.95) !important;
+}
+
+.dark .bg-slate-50,
+.dark .list-row,
+.dark .info-box,
+.dark .data-table th {
+  background-color: #1f2937 !important;
+}
+
+.dark .text-ink,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark .font-extrabold,
+.dark .font-bold {
+  color: #f8fafc;
+}
+
+.dark .text-slate-700,
+.dark .text-slate-600,
+.dark .text-slate-500,
+.dark .footer-link,
+.dark .nav-link,
+.dark .mobile-nav-link,
+.dark .field,
+.dark .search-panel label,
+.dark .list-row,
+.dark .data-table td {
+  color: #cbd5e1 !important;
+}
+
+.dark .border-line,
+.dark .card,
+.dark header,
+.dark footer,
+.dark input,
+.dark select,
+.dark .input-with-icon,
+.dark .theme-toggle,
+.dark .icon-button,
+.dark .data-table td {
+  border-color: #334155 !important;
+}
+
+.dark input,
+.dark select,
+.dark .input-with-icon,
+.dark .theme-toggle,
+.dark .icon-button,
+.dark .btn-secondary,
+.dark .btn-ghost {
+  background-color: #1f2937 !important;
+  color: #f8fafc !important;
+}
+
+.dark input::placeholder {
+  color: #94a3b8;
+}
+
+.dark .btn-light {
+  background-color: #f8fafc !important;
+  color: #111827 !important;
+}
+
+.dark .nav-link:hover,
+.dark .mobile-nav-link:hover,
+.dark .btn-ghost:hover,
+.dark .theme-toggle:hover,
+.dark .btn-secondary:hover {
+  background-color: #334155 !important;
+}
+
+.dark .nav-link-active,
+.dark .side-link-active,
+.dark .step-number,
+.dark .avatar {
+  background-color: var(--brand-green) !important;
+  color: #ffffff !important;
+}
+
+.dark .side-link {
+  color: #cbd5e1;
+}
+
+.dark .side-link:hover {
+  background-color: #1f2937;
+  color: #f8fafc;
+}
+
+.dark .modal-backdrop {
+  background-color: rgba(2, 6, 23, 0.72) !important;
 }

@@ -1,5 +1,5 @@
-import { Menu, Search, Store, X } from "lucide-react";
-import { useState } from "react";
+import { Menu, Moon, Search, Store, Sun, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 const navItems = [
@@ -12,6 +12,19 @@ const navItems = [
 
 export default function Layout() {
   const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "light";
+    return localStorage.getItem("otoparca-theme") === "dark" ? "dark" : "light";
+  });
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", mode === "dark");
+    localStorage.setItem("otoparca-theme", mode);
+  }, [mode]);
+
+  function toggleMode() {
+    setMode((current) => (current === "light" ? "dark" : "light"));
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 text-ink">
@@ -34,6 +47,10 @@ export default function Layout() {
             ))}
           </nav>
           <div className="hidden items-center gap-2 lg:flex">
+            <button className="theme-toggle" onClick={toggleMode} type="button" aria-label="Tema değiştir">
+              {mode === "light" ? <Moon size={17} /> : <Sun size={17} />}
+              {mode === "light" ? "Dark" : "Light"}
+            </button>
             <Link to="/parca-ara" className="btn btn-ghost">
               <Search size={18} /> Ara
             </Link>
@@ -53,6 +70,10 @@ export default function Layout() {
                   {item.label}
                 </NavLink>
               ))}
+              <button className="theme-toggle justify-center" onClick={toggleMode} type="button">
+                {mode === "light" ? <Moon size={17} /> : <Sun size={17} />}
+                {mode === "light" ? "Dark Mode" : "Light Mode"}
+              </button>
             </div>
           </div>
         )}
