@@ -1,4 +1,4 @@
-# ⚙️OtoParça Bul
+# ⚙️ OtoParça Bul
 
 Sanayideki oto yedek parça satan küçük dükkanları, parça arayan müşterilerle buluşturan modern bir MVP/prototip web uygulaması.
 
