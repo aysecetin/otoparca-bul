@@ -20,7 +20,7 @@ gibi modülleri ihtiyaca göre sunar.
 
 ## Öne Çıkan Özellikler
 
-- Parça arama ve filtreleme
+- Parça arama ve filtreleme 
 - Parça detay sayfası
 - Parçacı profil/dijital vitrin sayfası
 - Parçacı paneli
@@ -37,7 +37,7 @@ gibi modülleri ihtiyaca göre sunar.
 
 Her parçacı tüm sistemi almak zorunda değildir. İhtiyacına göre modül seçebilir.
 
-### Vitrin Paketi
+### 👀 Vitrin Paketi
 
 Web sitesi olmayan dükkanlar için dijital profil, WhatsApp talebi ve öne çıkan parça vitrini.
 
