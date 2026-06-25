@@ -41,7 +41,7 @@ Her parçacı tüm sistemi almak zorunda değildir. İhtiyacına göre modül se
 
 Web sitesi olmayan dükkanlar için dijital profil, WhatsApp talebi ve öne çıkan parça vitrini.
 
-### Cari Takip Paketi
+### 📝 Cari Takip Paketi
 
 Stok ihtiyacı olmayan ama müşteri, servis veya esnaf hesabı takip eden işletmeler için borç/alacak ekranı.
 
